@@ -1,9 +1,8 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, relationship
+from sqlalchemy.orm import relationship
 from enum import Enum
+from database_manager import Base
 
-Base = declarative_base()
 
 class Language(Enum):
   EN = 'english',
@@ -44,18 +43,3 @@ class Sentence(Base):
     Returns a string representation of the Sentence model instance.
     """
     return f"Sentence(id={self.id}, word_id={self.word_id}, sentence='{self.sentence}', pronounciation='{self.pronounciation}', english_definition='{self.english_definition}')"
-
-def create_session(engine):
-  """
-  Creates a session object bound to the provided engine.
-
-  Args:
-      engine (sqlalchemy.engine.Engine): The database engine object.
-
-  Returns:
-      sqlalchemy.orm.session.Session: A session object for interacting with the database.
-  """
-  Session = sessionmaker(bind=engine)
-  Base.metadata.create_all(engine)
-
-  return Session()
