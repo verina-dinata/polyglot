@@ -1,7 +1,7 @@
 from base_repository import BaseRepository
-from models import Word
+from models import Sentence
 
-class WordRepository(BaseRepository):
+class SentenceRepository(BaseRepository):
     """
     A specific repository for managing User model operations.
 
@@ -10,7 +10,7 @@ class WordRepository(BaseRepository):
     """
 
     def __init__(self, session):
-        super().__init__(session, Word)  # Call parent class constructor
+        super().__init__(session, Sentence)  # Call parent class constructor
 
     def create(self, data: dict) -> object:
         """
@@ -23,6 +23,6 @@ class WordRepository(BaseRepository):
             The newly created User model instance.
         """
 
-        word = Word(**data)
-        self._save(word)
-        return word
+        sentence = Sentence(**data)
+        self._save(sentence)
+        return sentence

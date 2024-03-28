@@ -13,7 +13,7 @@ class Word(Base):
 
   id = Column(Integer, primary_key=True)
   language = Column(String, nullable=False)
-  word = Column(String, unique=False, nullable=False)
+  word_string = Column(String, unique=False, nullable=False)
   pronounciation = Column(String, nullable=False)
   type = Column(String, nullable=False)
   english_definition = Column(String, nullable=False)
@@ -24,7 +24,7 @@ class Word(Base):
     """
     Returns a string representation of the Word model instance.
     """
-    return f"Word(id={self.id}, language='{self.language}', word='{self.word}', pronounciation='{self.pronounciation}', type='{self.type}', english_definition='{self.english_definition}')"
+    return f"Word(id={self.id}, language='{self.language}', word string='{self.word_string}', pronounciation='{self.pronounciation}', type='{self.type}', english_definition='{self.english_definition}')"
 
 
 class Sentence(Base):

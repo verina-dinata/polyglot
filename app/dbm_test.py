@@ -21,14 +21,21 @@ dbm = DatabaseManager()
 session = dbm.get_session()
 
 word_repo = WordRepository(session)
-new_word = word_repo.create({"language": "chinese", "word": "hello", "pronounciation": "hello", "type": "noun", "english_definition": "hello"})
+new_word = word_repo.create(
+  {
+    "language": "chinese",
+    "word": "hello",
+    "pronounciation": "hello",
+    "type": "noun",
+    "english_definition": "hello",
+  }
+)
 
 # Get all data from repository
-# print(word_repo.get_all())
-print(word_repo.get_by_id(1))
+word_repo.get_all()
+# word_repo.get_all()
 
-word_to_be_changed = word_repo.get_by_id(1)
-updated_values = {'word': 'abc', 'pronounciation': 'abc'}
-print(word_repo.update(word_to_be_changed, updated_values))
+# Homework 1 -> Refactor this into
+word_repo.get_all()
 
-# Homework 3 -> Create sample code for reading CSV files
+# Homework 1 -> Give me example find by id

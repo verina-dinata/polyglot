@@ -1,3 +1,5 @@
+from sqlalchemy.exc import IntegrityError
+
 class BaseRepository:
     """
     A base repository class for performing CRUD operations on SQLAlchemy models.
@@ -9,10 +11,11 @@ class BaseRepository:
         session: A SQLAlchemy session object.
     """
 
-    def __init__(self, session):
+    def __init__(self, session, model_class):
         self.session = session
+        self.model_class = model_class
 
-    def get_by_id(self, model_class, id: int) -> object:
+    def get_by_id(self, id: int) -> object:
         """
         Retrieves a record by its primary key.
 
@@ -24,9 +27,9 @@ class BaseRepository:
             The model instance or None if not found.
         """
 
-        return self.session.query(model_class).get(id)
+        return self.session.query(self.model_class).get(id)
 
-    def get_all(self, model_class) -> list:
+    def get_all(self) -> list:
         """
         Retrieves all records from the database for a specific model.
 
@@ -36,8 +39,36 @@ class BaseRepository:
         Returns:
             A list of model instances.
         """
+        # model = self.session.model_class
+        return self.session.query(self.model_class).all()
 
-        return self.session.query(model_class).all()
+    def update(self, obj, data: dict) -> object:
+        """
+        Updates an existing record based on its data.
+
+        Args:
+            obj: The model instance to be updated.
+            data: A dictionary containing the updated data for the object.
+
+        Returns:
+            The updated model instance.
+
+        Raises:
+            IntegrityError: If there's a database constraint violation during update.
+        """
+
+        try:
+            # Update attributes using dictionary unpacking
+            for field, value in data.items():
+                setattr(obj, field, value)
+
+            self._save(obj)
+            return obj
+        except IntegrityError as e:
+            # Handle potential database constraint violations
+            self.session.rollback()
+            raise e
+
 
     def _save(self, obj):
         """
