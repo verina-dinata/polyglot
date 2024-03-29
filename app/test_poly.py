@@ -23,7 +23,8 @@ try:
     # response = polly.synthesize_speech(Text="Hello world!", OutputFormat="mp3",
                                         # VoiceId="Joanna")
     response = polly.synthesize_speech(Text="你叫什么名字?", OutputFormat="mp3",
-                                       LanguageCode="cmn-CN", VoiceId="Zhiyu")
+                                       LanguageCode="cmn-CN", VoiceId="Zhiyu",
+                                       SampleRate="24000")
 except (BotoCoreError, ClientError) as error:
     # The service returned an error, exit gracefully
     print(error)
