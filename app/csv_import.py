@@ -2,7 +2,7 @@ import csv
 from repositories.word_repository import WordRepository
 from repositories.sentence_repository import SentenceRepository
 from database_manager import DatabaseManager
-from models import Language
+from models.word import Language
 
 dbm = DatabaseManager()
 session = dbm.get_session()

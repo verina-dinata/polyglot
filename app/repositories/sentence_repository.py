@@ -1,5 +1,5 @@
 from repositories.base_repository import BaseRepository
-from models import Sentence
+from models.sentence import Sentence
 
 class SentenceRepository(BaseRepository):
     """

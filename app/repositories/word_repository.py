@@ -1,5 +1,5 @@
 from repositories.base_repository import BaseRepository
-from models import Word
+from models.word import Word
 
 class WordRepository(BaseRepository):
     """
