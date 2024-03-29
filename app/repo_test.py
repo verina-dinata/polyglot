@@ -13,9 +13,9 @@
 # session.commit()
 
 # Create with repository
-from word_repository import WordRepository
-from database_manager import DatabaseManager
-from models import Word, Language
+from repositories.word_repository import WordRepository
+from database.database_manager import DatabaseManager
+from models.word import Word, Language
 
 dbm = DatabaseManager()
 session = dbm.get_session()

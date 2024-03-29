@@ -1,7 +1,7 @@
 import csv
 from repositories.word_repository import WordRepository
 from repositories.sentence_repository import SentenceRepository
-from database_manager import DatabaseManager
+from database.database_manager import DatabaseManager
 from models.word import Language
 
 dbm = DatabaseManager()
