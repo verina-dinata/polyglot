@@ -32,8 +32,8 @@ with open('../data/words.csv', 'r') as csvfile:
 
         new_word = word_repo.create({"language": Language.CN.value, "word_string": word_string, "pronounciation": pronounciation, "type": type, "english_definition": english_definition})
 
-        new_sentence1 = sentence_repo.create({"sentence": sentence1, "pronounciation": sentence1_pro, "english_definition": sentence1_eng_def})
-        new_sentence2 = sentence_repo.create({"sentence": sentence2, "pronounciation": sentence2_pro, "english_definition": sentence2_eng_def})
+        new_sentence1 = sentence_repo.create({"sentence_string": sentence1, "pronounciation": sentence1_pro, "english_translation": sentence1_eng_def})
+        new_sentence2 = sentence_repo.create({"sentence_string": sentence2, "pronounciation": sentence2_pro, "english_translation": sentence2_eng_def})
 
         new_word.sentences.append(new_sentence1)
         new_word.sentences.append(new_sentence2)

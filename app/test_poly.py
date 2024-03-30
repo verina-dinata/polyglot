@@ -22,8 +22,7 @@ try:
     # Request speech synthesis
     # response = polly.synthesize_speech(Text="Hello world!", OutputFormat="mp3",
                                         # VoiceId="Joanna")
-    response = polly.synthesize_speech(Text="你叫什么名字?", OutputFormat="mp3",
-                                       LanguageCode="cmn-CN", VoiceId="Zhiyu",
+    response = polly.synthesize_speech(Text="你叫什么名字?", OutputFormat="mp3", VoiceId="Zhiyu",
                                        SampleRate="24000")
 except (BotoCoreError, ClientError) as error:
     # The service returned an error, exit gracefully
@@ -37,7 +36,7 @@ if "AudioStream" in response:
     # ensure the close method of the stream object will be called automatically
     # at the end of the with statement's scope.
         with closing(response["AudioStream"]) as stream:
-           output = "./speech.mp3"
+           output = "speech.mp3"
            try:
             # Open a file for writing the output as a binary stream
                 with open(output, "wb") as file:

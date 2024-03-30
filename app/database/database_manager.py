@@ -9,7 +9,7 @@ Base = declarative_base()
 class DatabaseManager:
 
   def __init__(self) -> None:
-    self.engine = create_engine('sqlite:///sqlite.db')
+    self.engine = create_engine('sqlite:///database/sqlite.db')
     self.session_maker = sessionmaker(bind=self.engine)
     Base.metadata.create_all(self.engine)
 
@@ -22,9 +22,3 @@ class DatabaseManager:
       A new SQLAlchemy session object.
     """
     return self.session_maker()
-
-  # def get_base(self) -> object:
-  #   """
-  #   Returns a Base class for model.
-  #   """
-  #   return self.base
