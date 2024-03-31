@@ -1,3 +1,10 @@
+.noto-sans  {
+  font-family: "Noto Sans SC", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
 .App {
   text-align: center;
 }

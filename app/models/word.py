@@ -33,5 +33,8 @@ class Word(Base):
       "pronounciation": self.pronounciation,
       "language": self.language,
       "type": self.type,
-      "english_definition": self.english_definition
+      "english_definition": self.english_definition,
+      "chinese_sound_path": f"/assets/sound/words/{self.id}_word_string_cn.mp3",
+      "english_sound_path": f"/assets/sound/words/{self.id}_definition_en.mp3"
+
     }

@@ -17,7 +17,7 @@ def read_root():
 
 @app.get("/api/v1/words")
 def words_index(page: int = Query(default=1, description="Page number for word list (optional)")):
-  words = word_repo.get_with_pagination(page, 40)
+  words = word_repo.get_with_pagination(page, 36)
   array = []
   for word in words:
     array.append(word.json())
@@ -32,18 +32,23 @@ def get_sentences_for_word(id: str):
     array.append(sentence.json())
   return array
 
-
-mp3_directory = "./assets/sound/sentences"
 @app.get("/assets/sound/sentences/{filename}")
-def get_mp3(filename: str):
-    # Check if the requested file exists
-    file_path = os.path.join(mp3_directory, filename)
+def get_sentence_mp3(filename: str):
+  file_path = os.path.join("./assets/sound/sentences", filename)
+  return stream_mp3(file_path)
 
-    if not os.path.exists(file_path):
-        return Response(status_code=404)
+@app.get("/assets/sound/words/{filename}")
+def get_word_mp3(filename: str):
+  file_path = os.path.join("./assets/sound/words", filename)
+  return stream_mp3(file_path)
 
-    def readfile():
-        with open(file_path, mode="rb") as file:
-            yield from file
 
-    return StreamingResponse(readfile(), media_type="audio/mpeg")
+def stream_mp3(file_path):
+  if not os.path.exists(file_path):
+    return Response(status_code=404)
+
+  def readfile():
+    with open(file_path, mode="rb") as file:
+      yield from file
+
+  return StreamingResponse(readfile(), media_type="audio/mpeg")

@@ -24,5 +24,7 @@ class Sentence(Base):
       "id": self.id,
       "sentence_string": self.sentence_string,
       "pronounciation": self.pronounciation,
-      "english_translation": self.english_translation
+      "english_translation": self.english_translation,
+      "chinese_sound_path": f"/assets/sound/sentences/{self.id}_sentence_string_cn.mp3",
+      "english_sound_path": f"/assets/sound/sentences/{self.id}_translation_en.mp3"
     }
