@@ -18,3 +18,11 @@ class Sentence(Base):
     Returns a string representation of the Sentence model instance.
     """
     return f"Sentence(id={self.id}, word_id={self.word_id}, sentence_string='{self.sentence_string}', pronounciation='{self.pronounciation}', english_translation='{self.english_translation}')"
+
+  def json(self):
+    return {
+      "id": self.id,
+      "sentence_string": self.sentence_string,
+      "pronounciation": self.pronounciation,
+      "english_translation": self.english_translation
+    }

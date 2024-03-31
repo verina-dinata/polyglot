@@ -28,9 +28,10 @@ sentence_repo = SentenceRepository(session)
 # Get all data from repository
 # print(word_repo.get_all())
 # print(word_repo.get_by_id(1))
+print(word_repo.get_with_pagination(1, 40))
 
-word_to_be_changed = word_repo.get_by_id(1)
-print(word_to_be_changed)
+# word_to_be_changed = word_repo.get_by_id(1)
+# print(word_to_be_changed)
 # updated_values = {'word': 'abc', 'pronounciation': 'abc'}
 # print(word_repo.update(word_to_be_changed, updated_values))
 

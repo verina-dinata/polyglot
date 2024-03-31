@@ -25,3 +25,13 @@ class Word(Base):
     Returns a string representation of the Word model instance.
     """
     return f"Word(id={self.id}, language='{self.language}', word_string='{self.word_string}', pronounciation='{self.pronounciation}', type='{self.type}', english_definition='{self.english_definition}')"
+
+  def json(self):
+    return {
+      "id": self.id,
+      "word_string": self.word_string,
+      "pronounciation": self.pronounciation,
+      "language": self.language,
+      "type": self.type,
+      "english_definition": self.english_definition
+    }
