@@ -1,3 +1,6 @@
+import sys
+sys.path.append('../app')
+
 # Create approach without repository
 # from database_manager import DatabaseManager
 # from models import Word, Language
