@@ -23,7 +23,7 @@ const style = {
 };
 
 export default function SentenceModal(props) {
-  const apiUrl = "http://localhost:3000/api/v1/words/" + props.word.id + "/sentences";
+  const apiUrl = "https://lfh3knfmaxll3zix73xlj4wib40chwhw.lambda-url.ap-southeast-1.on.aws/api/v1/words/" + props.word.id + "/sentences";
   const [sentences, setSentences] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);

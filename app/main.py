@@ -1,15 +1,15 @@
-from fastapi import FastAPI, Query, File, Response
+from fastapi import FastAPI, Query, Response
 from fastapi.responses import StreamingResponse
+from mangum import Mangum
 import os
 
-from  repositories.word_repository import WordRepository
-from  repositories.sentence_repository import SentenceRepository
-from database.database_manager import DatabaseManager
+import repositories
+import database
 
 app = FastAPI()
-session = DatabaseManager().get_session()
-word_repo = WordRepository(session)
-sentence_repo = SentenceRepository(session)
+session = database.DatabaseManager().get_session()
+word_repo = repositories.WordRepository(session)
+sentence_repo = repositories.SentenceRepository(session)
 
 @app.get("/")
 def read_root():
@@ -52,3 +52,10 @@ def stream_mp3(file_path):
       yield from file
 
   return StreamingResponse(readfile(), media_type="audio/mpeg")
+
+
+handler = None
+if __name__ == "__main__":
+  uvicorn.run("app")
+else:
+  handler = Mangum(app, lifespan="off")

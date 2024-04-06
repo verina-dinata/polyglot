@@ -5,7 +5,8 @@ import WordCard from "./wordCard";
 
 export default function WordList() {
 
-  const apiUrl = 'http://localhost:3000/api/v1/words';
+  // const apiUrl = 'https://lfh3knfmaxll3zix73xlj4wib40chwhw.lambda-url.ap-southeast-1.on.aws/api/v1/words';
+  const apiUrl = '/api/v1/words';
   const [words, setWords] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
